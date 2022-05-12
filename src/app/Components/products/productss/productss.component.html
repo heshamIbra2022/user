@@ -1,0 +1,105 @@
+
+<div class="mb-3">
+  <label for="" class="form-label">Select Category</label>
+  <select class="form-control" name="cat" id="CatSel" title="catgory" (change)="getproduct()"  [(ngModel)]="selectedCatID" >
+    <option value="0">Select All</option>
+    <option *ngFor="let cat of categoryList " [value]="cat.id" >{{cat.name}}</option>
+  </select>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="container">
+  <div class="row">
+<span *ngFor="let prd of productListOfCat">
+<div class="card" style="width: 18rem;" >
+<div class="row" >
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{prd.name }}</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  </div>
+</span>
+
+</div>
+</div> -->
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 mx-auto my-5" *ngFor="let prd of productListOfCat">
+      <div class="card" style="width: 20rem;" [hidden]=" prd.quantity==0"[ngStyle]="{'background-color':prd.quantity==1? 'white':'white', 'color':prd.quantity==1? 'red':'darkblue'}">
+        <div class="row" >
+            <img [src]="prd.img" class="card-img-top" alt="..." (click)="openPopup(prd.img)">
+            <hr>
+            <div class="card-body">
+              <h5 class="card-title">{{prd.name }}</h5>
+              <hr>
+              <div >quantity {{ prd.quantity }}</div>
+              <hr>
+              <div> {{ prd.price | currency: 'USD' : 'code'}}</div>
+              <hr>
+             <input  #itemsCount  type="number" class="form-control" id="typeNumber" placeholder="amount needed">  
+             <hr>    
+                    <button type="button" class="btn btn-secondary"  (click)="sendObject(+itemsCount.value,prd)">Add to cart</button>
+
+            </div>
+          </div>
+          </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     
+      
+        <img [src]="productImg" class="" alt="..." >
+     
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" 
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displaystyleOfpop}">
+  <div class="modal-dialog" role="document">
+    
+    <div class="modal-content  " >
+     
+      
+     <div  id="myMsg"></div>
+     
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" 
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

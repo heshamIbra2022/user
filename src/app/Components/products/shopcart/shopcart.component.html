@@ -1,0 +1,22 @@
+<p>shopcart works!</p>
+
+<div class="container"  >
+    <div class="row">
+      <div class="col-md-5 mx-auto my-5" *ngFor="let cartitem of uoserordercartlist.shoppingOrderProducts">
+        <div class="card" style="width: 20rem;" >
+          <div class="row" >
+              <img [src]="cartitem.img" class="card-img-top" alt="..." >
+              <div class="card-body">
+                <h5 class="card-title bg-secondary">{{ cartitem.name }}</h5>
+              <!-- <div class="bg-success">quantity ={{cartitem.quantity}}</div> -->
+                <input [(ngModel)]="cartitem.quantity" type="number" class="form-control" id="typeNumber" placeholder="amount needed">  
+  
+                <button type="button" class="btn btn-secondary"  >remove</button>
+    
+  
+              </div>
+            </div>
+            </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,18 @@
+
+<form class="m-3" [formGroup]="userRegisterFormGroup" (ngSubmit)="login()">
+
+<div class="mb-3">
+    <label for="uName" class="form-label">userName</label>
+    <input type="text" formControlName="userName" class="form-control" name="uName" id="uName" placeholder="userName">
+  </div>
+
+  <div class="mb-3">
+    <label for="uPass" class="form-label">password</label>
+    <input type="text" formControlName="password" class="form-control" name="uPass" id="uPass" placeholder="userName">
+  </div>
+  <button [disabled]="userRegisterFormGroup.invalid" type="submit" class="btn btn-success">Submit</button>
+
+</form>
+
+<div id="hesh"></div>
+
